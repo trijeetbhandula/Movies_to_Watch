@@ -1,0 +1,65 @@
+BoxLayout:
+    orientation: 'horizontal'
+    BoxLayout
+        size_hint_x: 0.3
+        orientation: 'vertical'
+        Label:
+            size_hint_y: 0.1
+            text: "Sort by:"
+        Spinner:
+            size_hint_y: 0.1
+            id: category_selection
+            text: "CATEGORY"
+            values: ["TITLE", "YEAR", "CATEGORY", "IS_WATCHED"]
+            on_text: app.sort_by_options(self.text)
+        Label:
+            size_hint_y: 0.1
+            text: "Add New Movie..."
+        Label:
+            size_hint_y: 0.1
+            text: "Title:"
+        TextInput:
+            id: entered_title
+            size_hint_y: 0.1
+            text: ''
+            multiline: False
+            write_tab: False
+        Label:
+            size_hint_y: 0.1
+            text: "Category:"
+        TextInput:
+            id: entered_category
+            size_hint_y: 0.1
+            text: ''
+            multiline: False
+            write_tab: False
+        Label:
+            size_hint_y: 0.1
+            text: "Year:"
+        TextInput:
+            id: entered_year
+            size_hint_y: 0.1
+            text: ''
+            multiline: False
+            write_tab: False
+        Button:
+            text: 'Add Movie'
+            size_hint_y: 0.1
+            on_release: app.get_valid_input(entered_title.text, entered_category.text, entered_year.text)
+        Button:
+            text: 'Clear'
+            size_hint_y: 0.1
+            on_release: app.clear_fields()
+    BoxLayout
+        orientation:'vertical'
+        Label:
+            size_hint_y: 0.1
+            text: app.status_movie
+        BoxLayout:
+            id: entries_box
+            orientation: 'vertical'
+        Label:
+            size_hint_y: 0.1
+            text: app.status_text
+
+
